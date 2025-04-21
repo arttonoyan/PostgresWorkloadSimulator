@@ -10,17 +10,17 @@ public class TestServerBuilder
     private TestServerBuilder()
     {
         Services = new ServiceCollection();
-        PostgreSqlBuilder = new PostgreSqlBuilder();
+        PostgresSqlBuilder = new PostgreSqlBuilder();
     }
 
     public IServiceCollection Services { get; }
-    private PostgreSqlBuilder PostgreSqlBuilder { get; }
+    private PostgreSqlBuilder PostgresSqlBuilder { get; }
 
     public static TestServerBuilder CreateDefaultBuilder(string databaseName = "AnalyticsDb")
     {
         var builder = new TestServerBuilder();
 
-        builder.PostgreSqlBuilder
+        builder.PostgresSqlBuilder
             .WithDatabase(databaseName);
 
         builder.Services.AddCoreDataServices();
@@ -28,7 +28,7 @@ public class TestServerBuilder
         return builder;
     }
 
-    public TestServer Build() => new(Services.BuildServiceProvider(true), PostgreSqlBuilder.Build());
+    public TestServer Build() => new(Services.BuildServiceProvider(true), PostgresSqlBuilder.Build());
 }
 
 public class TestServer : IAsyncDisposable
@@ -40,22 +40,6 @@ public class TestServer : IAsyncDisposable
         ServiceProvider = serviceProvider;
         _dbContainer = dbContainer;
     }
-
-    //public IServiceProvider ConfigureAsync(string databaseName = "AnalyticsDb")
-    //{
-    //    // Start PostgreSQL container
-    //    _dbContainer = new PostgreSqlBuilder()
-    //        .WithDatabase(databaseName)
-    //        .Build();
-
-    //    // Configure services
-    //    var services = new ServiceCollection();
-    //    services.AddCoreDataServices(_dbContainer.GetConnectionString());
-
-    //    // Build provider and ensure database is created
-    //    var provider = services.BuildServiceProvider(true);
-    //    return provider;
-    //}
 
     public IServiceProvider ServiceProvider { get; }
 
