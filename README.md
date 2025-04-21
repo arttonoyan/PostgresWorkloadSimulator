@@ -55,10 +55,11 @@ Elapsed: 00:00:02.273
 
 ## 📦 Dependencies
 
-- .NET 8 or later
-- Entity Framework Core
-- PostgreSQL
-- Microsoft.Extensions.Logging
+- [.NET 8](https://learn.microsoft.com/en-us/shows/dotnetconf-2023/welcome-to-dotnet-8)
+- [Entity Framework Core](https://learn.microsoft.com/en-us/ef/core/) and [Postgres Provider](https://www.nuget.org/packages/Npgsql.EntityFrameworkCore.PostgreSQL)
+- [PostgreSQL](https://www.postgresql.org/)
+- [BenchmarkDotNet](https://github.com/dotnet/BenchmarkDotNet)
+- [Testcontainers PostgreSQL Module](https://dotnet.testcontainers.org/modules/postgres/)
 
 ---
 
