@@ -1,4 +1,3 @@
-```markdown
 # PostgresWorkloadSimulator
 
 A .NET-based simulation tool for benchmarking PostgreSQL under concurrent transactional workloads.  
